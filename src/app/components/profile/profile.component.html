@@ -1,0 +1,59 @@
+<div class="well">
+    <form action="">
+      <div class="form-group">
+        <input type="text" class="form-control" placeholder="search Github user...." [(ngModel)]='username' name="username" (keyup)="searchUser()">
+      </div>
+    </form>
+  </div>
+
+<div *ngIf='user'>
+ <div class="card">
+   <div class="card-header">{{ user.name }}</div>
+   <div class="card-body">
+     <div class="row">
+       <div class="col-md-4">
+         <img class="img-thumbnail" src="{{ user.avatar_url}}" alt="no image to display">
+         <a class="btn btn-dark btn-block" href="{{ user.html_url }}"> view profile </a>
+       </div>
+       <div class="col-md-8">
+          <div>
+            <span class="btn btn-sm btn-danger col-md-3">{{user.public_gists}} Public Gists</span>
+            <span class="btn btn-sm btn-primary col-md-3">{{user.public_repos}} Public Repos</span>
+            <span class="btn btn-sm btn-success col-md-3">{{ user.followers }} Followers</span>
+            <span class="btn btn-sm btn-info col-md-3">{{ user.following }} following</span>
+          </div><br>
+          <ul class="list-group">
+            <li class="list-group-item"><strong>User Name   : </strong> {{ user.name }}</li>
+            <li class="list-group-item"><strong>Working at  : </strong> {{ user.company }}</li>
+            <li class="list-group-item"><strong>E-mail      :</strong> {{ user.email }}</li>
+            <li class="list-group-item"><strong>Location    :</strong> {{ user.location }}</li>
+            <li class="list-group-item"><strong>Information :</strong> {{ user.bio }}</li>
+          </ul>
+       </div>
+     </div>
+   </div>
+ </div>
+
+<br><br>
+
+<div class="my-3 p-3 bg-white rounded">
+    <h6 class="border-bottom border-gray pb-2 mb-0">Repository</h6>
+
+    <div class="media pt-3" *ngFor="let repo of repos">
+      <div class="media-body pb-3 mb-0 medium  border-bottom border-gray row">
+        <div class="col-md-9">
+          <h6>{{ repo.name }}</h6>
+          <p>{{ repo.description}}</p>
+        </div>
+        <div class="col-md-3">
+          
+            <div class="btn btn-sm btn-success"><strong>Watchers : </strong> {{ repo.watchers }}</div>
+            <div class="btn btn-sm btn-danger"><strong>forks : </strong> {{ repo.forks }}</div>    
+        </div>
+
+       
+      </div>
+    </div>
+  </div>
+
+</div>
